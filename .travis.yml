@@ -1,8 +1,18 @@
-language: python
+matrix:
+  include:
+    - language: python
+      python: 
+        - 3.6
+      before_install:
+        - cd backend/
+      install: 
+        - pip install -e .
+      script:
+        - pytest
 
-python:
- - "3.6"
+    - language: php
+      php:
+        - 7.2
 
-install: pip install -e .
-
-script: pytest
+notifications:
+  email: false
